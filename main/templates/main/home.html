@@ -20,10 +20,10 @@
     <p>request.environ['wsgi.url_scheme']: {{ url_scheme }}</p>
 
     <h1>Nginx config</h1>
+    <pre>{{ nginx_conf }}</pre>
 
-    <pre>
-        {{ nginx_conf }}
-    </pre>
+    <h1>Startup script</h1>
+    <pre>{{ run_sh_content }}</pre>
 
 </body>
 </html>
