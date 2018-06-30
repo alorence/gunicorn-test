@@ -6,7 +6,24 @@
 </head>
 <body>
 
-    <h1>Hello world</h1>
+    <h1>Links</h1>
+    <a href="https://gunicorn-test.exige.info">HTTPS version</a> -
+    <a href="http://gunicorn-test.exige.info">HTTP version</a>
+
+    <h1>Versions</h1>
+    <p>This app: {{ app_version }}</p>
+    <p>Gunicorn: {{ gun_version }}</p>
+    <p>Django: {{ dj_version }}</p>
+
+    <h1>Request</h1>
+    <p>request.is_secure: {{ request.is_secure }}</p>
+    <p>request.environ['wsgi.url_scheme']: {{ url_scheme }}</p>
+
+    <h1>Nginx config</h1>
+
+    <pre>
+        {{ nginx_conf }}
+    </pre>
 
 </body>
 </html>
