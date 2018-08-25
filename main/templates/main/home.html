@@ -1,29 +1,97 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hi</title>
+    <title>Gunicorn socket issue demo</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Prism.js: coloured code samples-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css">
 </head>
 <body>
 
-    <h1>Links</h1>
-    <a href="https://gunicorn-test.exige.info">HTTPS version</a> -
-    <a href="http://gunicorn-test.exige.info">HTTP version</a>
+<div class="container-fluid">
 
-    <h1>Versions</h1>
-    <p>This app: {{ app_version }}</p>
-    <p>Gunicorn: {{ gun_version }}</p>
-    <p>Django: {{ dj_version }}</p>
+    <h1>Basic info</h1>
+    <div class="row">
 
-    <h1>Request</h1>
-    <p>request.is_secure: {{ request.is_secure }}</p>
-    <p>request.environ['wsgi.url_scheme']: {{ url_scheme }}</p>
+        <div class="col">
+            <div class="versions card">
+                <div class="card-header">
+                    Links
+                </div>
+                <div class="card-body">
+                    <a href="https://gunicorn-test.exige.info">HTTPS version</a> -
+                    <a href="http://gunicorn-test.exige.info">HTTP version</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="versions card">
+                <div class="card-header">
+                    Versions
+                </div>
+                <div class="card-body">
+                    This app: {{ app_version }}<br/>
+                    Gunicorn: {{ gun_version }}<br/>
+                    Django: {{ dj_version }}
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="versions card">
+                <div class="card-header">
+                    Request
+                </div>
+                <div class="card-body">
+                    request.environ['wsgi.url_scheme']: {{ url_scheme }}<br/>
+                    request.is_secure: {{ request.is_secure }}<br/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <h1>Request's meta</h1>
+
+    <table class="table">
+        {% for k, v in request.META.items %}
+            {% if k not in meta_blacklist %}
+                <tr>
+                    <td>{{ k }}</td>
+                    <td>{{ v }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
 
     <h1>Nginx config</h1>
-    <pre>{{ nginx_conf }}</pre>
+    <pre><code class="language-nginx">{{ nginx_conf }}</code></pre>
+
+    <h1>Gunicorn config</h1>
+    <pre><code class="language-python">{{ gunicorn_conf }}</code></pre>
 
     <h1>Startup script</h1>
-    <pre>{{ run_sh_content }}</pre>
+    <pre><code class="language-bash">{{ run_sh_content }}</code></pre>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-nginx.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-python.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-bash.js"></script>
 
 </body>
 </html>
