@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'analytical',
 
     "main"
 ]
@@ -122,3 +123,5 @@ STATIC_URL = '/static/'
 
 # Security related config
 # SECURE_SSL_REDIRECT = not DEBUG
+
+GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-1656321-11'

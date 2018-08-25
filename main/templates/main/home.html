@@ -1,7 +1,9 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
+{% load analytical %}
 <html lang="en">
 <head>
+    {% analytical_head_top %}
     <meta charset="UTF-8">
     <title>Gunicorn #1861 issue demo</title>
 
@@ -10,8 +12,10 @@
 
     <!-- Prism.js: coloured code samples-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css">
+    {% analytical_head_bottom %}
 </head>
 <body>
+{% analytical_body_top %}
 
 <div class="container-fluid">
 
@@ -104,5 +108,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-python.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-bash.js"></script>
 
+{% analytical_body_bottom %}
 </body>
 </html>
