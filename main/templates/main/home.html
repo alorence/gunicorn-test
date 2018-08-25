@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gunicorn socket issue demo</title>
+    <title>Gunicorn #1861 issue demo</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -16,6 +16,10 @@
 <div class="container-fluid">
 
     <h1>Basic info</h1>
+
+    <p>This page demonstrate Gunicorn issue #1861. For more information, please follow the
+        <a href="https://github.com/benoitc/gunicorn/issues/1861" target="_blank">discussion on GitHub</a>.</p>
+
     <div class="row">
 
         <div class="col">
@@ -24,8 +28,15 @@
                     Links
                 </div>
                 <div class="card-body">
-                    <a href="https://gunicorn-test.exige.info">HTTPS version</a> -
-                    <a href="http://gunicorn-test.exige.info">HTTP version</a>
+                    <ul>
+                        <li>
+                            <a href="https://gunicorn-test.exige.info">HTTPS version</a>
+                        </li>
+                        <li>
+                            <a href="http://gunicorn-test.exige.info">HTTP version</a> (depending on your browser, it
+                            is not always possible to reach HTTP version when you already visited HTTPS)
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
